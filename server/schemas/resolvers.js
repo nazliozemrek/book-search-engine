@@ -1,9 +1,8 @@
+const { User,Book} =require('../models');
 const resolvers = {
-    Query: {
-      helloWorld: () => {
-        return 'Hello world!';
-      }
-    }
-  };
+  Query:{
+    
+  }
+}
   
   module.exports = resolvers;
