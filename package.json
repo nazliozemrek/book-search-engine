@@ -2,9 +2,13 @@
   "name": "book-search",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "server/server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "if-env NODE_ENV=production && npm run start:prod || npm run start:dev",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start:dev": "concurrently \"cd server && npm run watch\" \"cd client && npm start\"",
+    "install": "cd server && npm i && cd ../client && npm i",
+    "heroku-postbuild": "cd client && npm run build"
   },
   "repository": {
     "type": "git",
@@ -16,5 +20,9 @@
   "bugs": {
     "url": "https://github.com/nazliozemrek/book-search-engine/issues"
   },
-  "homepage": "https://github.com/nazliozemrek/book-search-engine#readme"
+  "homepage": "https://github.com/nazliozemrek/book-search-engine#readme",
+  "dependencies": {
+    "concurrently": "^6.2.0",
+    "if-env": "^1.0.4"
+  }
 }
